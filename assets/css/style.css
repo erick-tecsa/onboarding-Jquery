@@ -1,0 +1,38 @@
+.create {
+  margin: 10px;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 100px;
+}
+
+.searchContainer {
+  width: 500px;
+  margin-right: 0;
+}
+
+#navbarSupportedContent {
+  justify-content: end;
+}
+
+.table {
+  text-align: center;
+}
+
+.edit,
+.delete {
+  padding: 2px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.edit:hover {
+  background-color: rgba(128, 128, 128, 0.321);
+}
+
+.delete:hover {
+  background-color: rgba(255, 0, 0, 0.326);
+}

@@ -10,5 +10,5 @@
 
      $query = "UPDATE contatos SET name='$name', lastName='$lastName', email='$email', phone='$phone', title='$title' WHERE id = $id";
     $contatos = sql($query);
-    echo json_encode("Contato registrado com sucesso");
+    echo json_encode("Contato Salvo com sucesso");
 ?>

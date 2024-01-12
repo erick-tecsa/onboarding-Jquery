@@ -1,5 +1,19 @@
+import listContacts from "./listController.js";
 function deleteContactFromDatabase(id) {
-  console.log("Esse é o id que eu quero deletar ", id);
+  try {
+    $.ajax({
+      url: "api/deletarContato.php",
+      method: "POST",
+      data: { id },
+    }).done(function (response) {
+      console.log(response);
+      $("#deleteModal").modal("hide");
+      $("#tbodyList").html("");
+      listContacts();
+    });
+  } catch (e) {
+    console.log(e);
+  }
 }
 
 export default function deleteContact(index) {
@@ -10,13 +24,11 @@ export default function deleteContact(index) {
     }).done(function (response) {
       const data = JSON.parse(response);
       const dataToEdit = data[index];
-      //   showModalWithInformation(dataToEdit);
-      console.log(index);
-      //   $(".updateButton")
-      //     .off("click")
-      //     .on("click", function () {
-      //       deleteContactFromDatabase(dataToEdit.id);
-      //     });
+      $(".deleteButton")
+        .off("click")
+        .on("click", function () {
+          deleteContactFromDatabase(dataToEdit.id);
+        });
     });
   } catch (e) {
     console.log(e);

@@ -139,7 +139,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-danger">Deletar</button>
+                <button type="button" class="btn btn-danger deleteButton">Deletar</button>
             </div>
             </div>
         </div>

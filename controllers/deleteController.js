@@ -1,4 +1,6 @@
 import listContacts from "./listController.js";
+import toastMessage from "../view/view.js";
+
 function deleteContactFromDatabase(id) {
   try {
     $.ajax({
@@ -28,6 +30,14 @@ export default function deleteContact(index) {
         .off("click")
         .on("click", function () {
           deleteContactFromDatabase(dataToEdit.id);
+          toastMessage("danger", "Sucesso", "contato deletado com sucesso");
+          $("#toast-place").addClass("active");
+
+          $(".toast").toast("show");
+          setTimeout(() => {
+            $("#toast-place").empty();
+            $("#toast-place").removeClass("active");
+          }, 3000);
         });
     });
   } catch (e) {

@@ -1,4 +1,5 @@
 import Routes from "../routes/routes.js";
+import formatData from "../assets/js/utils/dateFormat.js";
 
 export default function listContacts() {
   $.ajax({
@@ -10,7 +11,13 @@ export default function listContacts() {
         const data = JSON.parse(response);
         const tbody = $("#tbodyList");
 
-        $.each(data, function (index, element) {
+        const formattedData = $.map(data, function (element, index) {
+          const formattedCreatedAt = formatData(element.createdAt);
+          element.createdAt = formattedCreatedAt;
+          return element;
+        });
+
+        $.each(formattedData, function (index, element) {
           const tr = $("<tr/>");
           tbody.append(tr);
           tr.append($("<td/>").text(index));

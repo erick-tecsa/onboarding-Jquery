@@ -1,4 +1,6 @@
 import listContacts from "../controllers/listController.js";
+import toastMessage from "../view/view.js";
+
 async function showModalWithInformation(dataToEdit) {
   try {
     $("#updateName").val(dataToEdit.name);
@@ -57,6 +59,14 @@ export default function updateContact(index) {
         .off("click")
         .on("click", function () {
           saveUpdateAtDatabase(dataToEdit.id);
+          toastMessage("warning", "Sucesso", "Contato atualizado com sucesso");
+          $("#toast-place").addClass("active");
+
+          $(".toast").toast("show");
+          setTimeout(() => {
+            $("#toast-place").empty();
+            $("#toast-place").removeClass("active");
+          }, 3000);
         });
     });
   } catch (e) {
